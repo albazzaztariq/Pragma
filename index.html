@@ -268,8 +268,10 @@ os.<span class="py-fn">makedirs</span>(<span class="py-str">"output"</span>, exi
       <div class="pane-header pragma">Pragma</div>
       <pre><span class="pr-cm">// fetch from the API</span>
 <span class="pr-action">fetch:</span>
-      <span class="pr-key">source</span>=<span class="pr-val">https://api.openalex.org/works</span>
-      <span class="pr-key">structure</span>=<span class="pr-name">openalex.map</span>
+      <span class="pr-key">callmap</span>=<span class="pr-name">openalex.map</span>
+      <span class="pr-key">query</span>=<span class="pr-val">["transformer architecture" or "llm model format"]</span>
+      <span class="pr-key">year</span>=<span class="pr-val">2023</span>
+      <span class="pr-key">per_page</span>=<span class="pr-val">50</span>
 <span class="pr-cm">// convert to csv</span>
 <span class="pr-action">convert:</span>
       <span class="pr-key">from</span>=<span class="pr-val">json</span>
