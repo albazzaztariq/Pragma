@@ -1,6 +1,6 @@
 # Pragma
 
-**[albazzaztariq.github.io/UniLogic/pragma.html](https://albazzaztariq.github.io/UniLogic/pragma.html)**
+**[albazzaztariq.github.io/Pragma/](https://albazzaztariq.github.io/Pragma/)**
 
 Declarative pipeline language for data movement, transformation, and automation.
 
