@@ -21,7 +21,6 @@ body {
   align-items: center;
 }
 
-/* ── MAIN ── */
 main {
   width: 100%;
   max-width: 1080px;
@@ -31,12 +30,12 @@ main {
   gap: 0;
 }
 
-/* ── TOP ROW (matches grid columns) ── */
+/* ── TOP ROW ── */
 .top-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;
-  margin-bottom: 2px;
+  margin-bottom: 28px;
 }
 
 .top-left {
@@ -44,21 +43,19 @@ main {
   flex-direction: column;
   justify-content: flex-end;
   gap: 8px;
-  padding-bottom: 14px;
+  padding-bottom: 4px;
 }
 
-.compare-label {
-  font-size: 0.73rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #9a9a6a;
-}
-
-.description {
+.intro-text {
   font-size: 0.88rem;
   color: #a8a880;
-  line-height: 1.6;
-  max-width: 420px;
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+.intro-text strong {
+  color: #c8a030;
+  font-weight: 500;
 }
 
 .top-right {
@@ -66,7 +63,7 @@ main {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: 0 0 14px 20px;
+  padding: 0 0 4px 20px;
   gap: 6px;
 }
 
@@ -102,6 +99,14 @@ main {
   letter-spacing: 0.02em;
 }
 
+.tagline {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #7a7a50;
+  padding-left: 2px;
+  margin-bottom: 8px;
+}
+
 .lang-credit {
   font-size: 0.75rem;
   font-style: italic;
@@ -115,7 +120,25 @@ main {
   border-bottom: 1px dotted #c8a030;
 }
 
-/* ── SIDE-BY-SIDE ── */
+/* ── SECTION LABELS ── */
+.section-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.section-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #5a5a3a;
+  padding: 0 2px 6px;
+}
+
+.section-label.gold { color: #8a6a20; }
+
+/* ── CODE PANES ── */
 .compare {
   width: 100%;
   display: grid;
@@ -124,6 +147,11 @@ main {
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid #2a2a14;
+  margin-bottom: 28px;
+}
+
+.compare.three-wide {
+  grid-template-columns: 1fr;
 }
 
 .pane {
@@ -143,10 +171,11 @@ main {
 
 .pane-header.python { color: #7a8a6a; background: #161610; }
 .pane-header.pragma { color: #c8a030; background: #161610; }
+.pane-header.map    { color: #8a7a40; background: #161610; }
 
 .pane pre {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem;
+  font-size: 0.80rem;
   line-height: 1.7;
   padding: 20px 20px;
   overflow-x: auto;
@@ -155,6 +184,33 @@ main {
 }
 
 .pane.pragma-pane pre { color: #c8c0a0; }
+.pane.map-pane pre    { color: #b8a870; }
+
+/* maps stacked inside one pane */
+.maps-stack {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.map-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-block + .map-block {
+  border-top: 1px solid #2a2a14;
+}
+
+.map-block .map-filename {
+  padding: 6px 18px;
+  font-size: 0.68rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #6a6a3a;
+  background: #151508;
+  border-bottom: 1px solid #2a2a14;
+}
 
 /* Python syntax */
 .py-kw  { color: #c792ea; }
@@ -163,6 +219,7 @@ main {
 .py-cm  { color: #4a5a3a; font-style: italic; }
 .py-num { color: #f78c6c; }
 .py-var { color: #b0a88a; }
+.py-dec { color: #c8a030; }
 
 /* Pragma syntax */
 .pr-action { color: #c8a030; font-weight: 500; }
@@ -171,9 +228,24 @@ main {
 .pr-name   { color: #e8dfc8; }
 .pr-cm     { color: #4a5a3a; font-style: italic; }
 
+/* Map syntax */
+.mp-key { color: #82aaff; }
+.mp-val { color: #c3e88d; }
+.mp-map { color: #c8a030; }
+.mp-cm  { color: #5a5a3a; font-style: italic; }
+
+/* ── PIPELINE LABELS ── */
+.pipeline-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: #5a5a3a;
+  padding: 20px 0 6px;
+}
+
 /* ── BUTTON ── */
 .btn-row {
-  margin-top: 24px;
+  margin-top: 28px;
   display: flex;
   justify-content: flex-end;
 }
@@ -202,10 +274,10 @@ main {
 
   <div class="top-row">
     <div class="top-left">
-      <span class="compare-label">The same pipeline — Python vs Pragma</span>
-      <p class="description">Pragma describes a pipeline as a flat sequence of named actions. No boilerplate, no error handling scaffolding, no plumbing. The structure is the program.</p>
+      <p class="intro-text">Scheduled jobs — data pulls, email reports, DB updates. Swapping and recycling code is frequent. Below shows a helper function in Python to do this: <strong>70 lines</strong>. On the opposite side, <strong>12 lines</strong>. In each subsequent place they were used — <strong>30–40% less code</strong>. This was made to get rid of repetitive boilerplate, and make switching things out more akin to mechanical work instead of logic and algorithms. You say what goes where, and that's the end of it. From config to implementation.</p>
     </div>
     <div class="top-right">
+      <p class="tagline">Write what, not how.</p>
       <div class="header-logo-row">
         <div class="logo-circle"><img src="logo.png" alt="Pragma"></div>
         <span class="page-title">Pragma</span>
@@ -214,75 +286,209 @@ main {
     </div>
   </div>
 
+  <!-- ── DEFINED ONCE ── -->
+  <div class="section-row">
+    <span class="section-label">Python — openalex.py — defined once</span>
+    <span class="section-label gold">Pragma callmaps — defined once</span>
+  </div>
+
   <div class="compare">
 
-    <!-- PYTHON PANE -->
     <div class="pane">
-      <div class="pane-header python">Python</div>
+      <div class="pane-header python">openalex.py</div>
       <pre><span class="py-kw">import</span> requests
-<span class="py-kw">import</span> json
 <span class="py-kw">import</span> csv
 <span class="py-kw">import</span> os
+<span class="py-kw">import</span> psycopg2
+<span class="py-kw">import</span> smtplib
+<span class="py-kw">from</span> email.mime.multipart <span class="py-kw">import</span> MIMEMultipart
+<span class="py-kw">from</span> email.mime.base <span class="py-kw">import</span> MIMEBase
+<span class="py-kw">from</span> email <span class="py-kw">import</span> encoders
 
-<span class="py-var">API_URL</span> = <span class="py-str">"https://api.openalex.org/works"</span>
-<span class="py-var">params</span> = {
-    <span class="py-str">"search"</span>: <span class="py-str">"transformer architecture OR llm model format"</span>,
-    <span class="py-str">"per-page"</span>: <span class="py-num">50</span>,
-    <span class="py-str">"filter"</span>: <span class="py-str">"publication_year:2023"</span>,
-}
-<span class="py-var">headers</span> = {
-    <span class="py-str">"Authorization"</span>: <span class="py-str">"Bearer mytoken123"</span>
-}
 
-<span class="py-var">resp</span> = requests.<span class="py-fn">get</span>(<span class="py-var">API_URL</span>, params=<span class="py-var">params</span>, headers=<span class="py-var">headers</span>)
-<span class="py-kw">if</span> <span class="py-var">resp</span>.status_code != <span class="py-num">200</span>:
-    <span class="py-kw">raise</span> <span class="py-fn">Exception</span>(
-        <span class="py-str">f"Request failed: <span class="py-var">{resp.status_code}</span>"</span>
+<span class="py-dec">def</span> <span class="py-fn">fetch</span>(query, year, per_page=<span class="py-num">50</span>):
+    resp = requests.<span class="py-fn">get</span>(
+        <span class="py-str">"https://api.openalex.org/works"</span>,
+        params={
+            <span class="py-str">"search"</span>: query,
+            <span class="py-str">"filter"</span>: <span class="py-fn">f</span><span class="py-str">"publication_year:{year}"</span>,
+            <span class="py-str">"per-page"</span>: per_page
+        },
+        headers={<span class="py-str">"Authorization"</span>: <span class="py-str">"Bearer mytoken123"</span>}
     )
+    resp.<span class="py-fn">raise_for_status</span>()
+    <span class="py-kw">return</span> resp.<span class="py-fn">json</span>().<span class="py-fn">get</span>(<span class="py-str">"results"</span>, [])
 
-<span class="py-var">data</span> = <span class="py-var">resp</span>.<span class="py-fn">json</span>()
-<span class="py-var">records</span> = <span class="py-var">data</span>.<span class="py-fn">get</span>(<span class="py-str">"results"</span>, [])
 
-<span class="py-var">rows</span> = []
-<span class="py-kw">for</span> <span class="py-var">r</span> <span class="py-kw">in</span> <span class="py-var">records</span>:
-    <span class="py-var">rows</span>.<span class="py-fn">append</span>({
-        <span class="py-str">"title"</span>: <span class="py-var">r</span>.<span class="py-fn">get</span>(<span class="py-str">"title"</span>, <span class="py-str">""</span>),
-        <span class="py-str">"year"</span>:  <span class="py-var">r</span>.<span class="py-fn">get</span>(<span class="py-str">"publication_year"</span>, <span class="py-str">""</span>),
-        <span class="py-str">"doi"</span>:   <span class="py-var">r</span>.<span class="py-fn">get</span>(<span class="py-str">"doi"</span>, <span class="py-str">""</span>),
-    })
+<span class="py-dec">def</span> <span class="py-fn">to_rows</span>(records, fields):
+    <span class="py-kw">return</span> [{k: r.<span class="py-fn">get</span>(v, <span class="py-str">''</span>) <span class="py-kw">for</span> k, v <span class="py-kw">in</span> fields.<span class="py-fn">items</span>()} <span class="py-kw">for</span> r <span class="py-kw">in</span> records]
 
-<span class="py-var">outpath</span> = <span class="py-str">"output/records.csv"</span>
-os.<span class="py-fn">makedirs</span>(<span class="py-str">"output"</span>, exist_ok=<span class="py-kw">True</span>)
 
-<span class="py-kw">with</span> <span class="py-fn">open</span>(<span class="py-var">outpath</span>, <span class="py-str">"w"</span>, newline=<span class="py-str">""</span>) <span class="py-kw">as</span> <span class="py-var">f</span>:
-    <span class="py-var">writer</span> = csv.<span class="py-fn">DictWriter</span>(
-        <span class="py-var">f</span>, fieldnames=[<span class="py-str">"title"</span>, <span class="py-str">"year"</span>, <span class="py-str">"doi"</span>]
+<span class="py-dec">def</span> <span class="py-fn">to_csv</span>(rows, path, fieldnames):
+    os.<span class="py-fn">makedirs</span>(os.path.<span class="py-fn">dirname</span>(path) <span class="py-kw">or</span> <span class="py-str">'.'</span>, exist_ok=<span class="py-kw">True</span>)
+    <span class="py-kw">with</span> <span class="py-fn">open</span>(path, <span class="py-str">"w"</span>, newline=<span class="py-str">""</span>) <span class="py-kw">as</span> f:
+        w = csv.<span class="py-fn">DictWriter</span>(f, fieldnames=fieldnames)
+        w.<span class="py-fn">writeheader</span>()
+        w.<span class="py-fn">writerows</span>(rows)
+
+
+<span class="py-dec">def</span> <span class="py-fn">to_db</span>(rows, table, conflict_col):
+    conn = psycopg2.<span class="py-fn">connect</span>(os.environ[<span class="py-str">'POSTGRES_CONN'</span>])
+    cur = conn.<span class="py-fn">cursor</span>()
+    cols = <span class="py-fn">list</span>(rows[<span class="py-num">0</span>].<span class="py-fn">keys</span>())
+    ph = <span class="py-str">", "</span>.<span class="py-fn">join</span>([<span class="py-str">"%s"</span>] * <span class="py-fn">len</span>(cols))
+    upd = <span class="py-str">", "</span>.<span class="py-fn">join</span>([<span class="py-fn">f</span><span class="py-str">"{c}=EXCLUDED.{c}"</span> <span class="py-kw">for</span> c <span class="py-kw">in</span> cols <span class="py-kw">if</span> c != conflict_col])
+    cur.<span class="py-fn">executemany</span>(
+        <span class="py-fn">f</span><span class="py-str">"INSERT INTO {table} ({', '.join(cols)}) VALUES ({ph})"</span>
+        <span class="py-fn">f</span><span class="py-str">" ON CONFLICT ({conflict_col}) DO UPDATE SET {upd}"</span>,
+        [<span class="py-fn">tuple</span>(r.<span class="py-fn">values</span>()) <span class="py-kw">for</span> r <span class="py-kw">in</span> rows]
     )
-    <span class="py-var">writer</span>.<span class="py-fn">writeheader</span>()
-    <span class="py-var">writer</span>.<span class="py-fn">writerows</span>(<span class="py-var">rows</span>)
+    conn.<span class="py-fn">commit</span>()
+    cur.<span class="py-fn">close</span>()
+    conn.<span class="py-fn">close</span>()
 
-<span class="py-fn">print</span>(<span class="py-str">f"Saved <span class="py-var">{len(rows)}</span> records to <span class="py-var">{outpath}</span>"</span>)</pre>
+
+<span class="py-dec">def</span> <span class="py-fn">to_email</span>(path, to_addr, subject):
+    msg = <span class="py-fn">MIMEMultipart</span>()
+    msg[<span class="py-str">"From"</span>] = <span class="py-str">"sender@lab.com"</span>
+    msg[<span class="py-str">"To"</span>] = to_addr
+    msg[<span class="py-str">"Subject"</span>] = subject
+    <span class="py-kw">with</span> <span class="py-fn">open</span>(path, <span class="py-str">"rb"</span>) <span class="py-kw">as</span> f:
+        part = <span class="py-fn">MIMEBase</span>(<span class="py-str">"application"</span>, <span class="py-str">"octet-stream"</span>)
+        part.<span class="py-fn">set_payload</span>(f.<span class="py-fn">read</span>())
+        encoders.<span class="py-fn">encode_base64</span>(part)
+        part.<span class="py-fn">add_header</span>(
+            <span class="py-str">"Content-Disposition"</span>,
+            <span class="py-fn">f</span><span class="py-str">"attachment; filename={os.path.basename(path)}"</span>
+        )
+        msg.<span class="py-fn">attach</span>(part)
+    <span class="py-kw">with</span> smtplib.<span class="py-fn">SMTP</span>(<span class="py-str">"smtp.lab.com"</span>, <span class="py-num">587</span>) <span class="py-kw">as</span> s:
+        s.<span class="py-fn">starttls</span>()
+        s.<span class="py-fn">login</span>(<span class="py-str">"sender@lab.com"</span>, <span class="py-str">"smtppassword"</span>)
+        s.<span class="py-fn">send_message</span>(msg)</pre>
     </div>
 
-    <!-- PRAGMA PANE -->
+    <div class="pane map-pane">
+      <div class="maps-stack">
+        <div class="map-block">
+          <div class="map-filename">openalex.map</div>
+          <pre><span class="mp-key">base</span>=<span class="mp-val">https://api.openalex.org</span>
+<span class="mp-key">auth</span>=<span class="mp-val">Bearer {OPENALEX_KEY}</span>
+<span class="mp-key">response_array</span>=<span class="mp-val">results</span>
+
+<span class="mp-map">query</span>:    <span class="mp-val">search=[value]</span>
+<span class="mp-map">year</span>:     <span class="mp-val">filter=publication_year:[value]</span>
+<span class="mp-map">per_page</span>: <span class="mp-val">per-page=[value]</span></pre>
+        </div>
+        <div class="map-block">
+          <div class="map-filename">postgres.map</div>
+          <pre><span class="mp-key">host</span>=<span class="mp-val">localhost</span>
+<span class="mp-key">dbname</span>=<span class="mp-val">research</span>
+<span class="mp-key">user</span>=<span class="mp-val">admin</span>
+<span class="mp-key">password</span>=<span class="mp-val">{POSTGRES_PASSWORD}</span>
+
+<span class="mp-map">table</span>:        <span class="mp-val">papers</span>
+<span class="mp-map">conflict_col</span>: <span class="mp-val">doi</span></pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── PIPELINE 1 ── -->
+  <span class="pipeline-label">Pipeline 1 — fetch papers, save to CSV</span>
+
+  <div class="compare">
+    <div class="pane">
+      <div class="pane-header python">Python</div>
+      <pre><span class="py-kw">from</span> openalex <span class="py-kw">import</span> fetch, to_rows, to_csv
+
+records = <span class="py-fn">fetch</span>(
+    <span class="py-str">"transformer architecture OR llm model format"</span>,
+    <span class="py-num">2023</span>,
+    per_page=<span class="py-num">50</span>
+)
+rows = <span class="py-fn">to_rows</span>(records, {
+    <span class="py-str">"title"</span>: <span class="py-str">"title"</span>, <span class="py-str">"year"</span>: <span class="py-str">"publication_year"</span>, <span class="py-str">"doi"</span>: <span class="py-str">"doi"</span>
+})
+<span class="py-fn">to_csv</span>(rows, <span class="py-str">"output/records.csv"</span>, [<span class="py-str">"title"</span>, <span class="py-str">"year"</span>, <span class="py-str">"doi"</span>])</pre>
+    </div>
     <div class="pane pragma-pane">
       <div class="pane-header pragma">Pragma</div>
-      <pre><span class="pr-cm">// fetch from the API</span>
-<span class="pr-action">fetch:</span>
-      <span class="pr-key">callmap</span>=<span class="pr-name">openalex.map</span>
-      <span class="pr-key">query</span>=<span class="pr-val">["transformer architecture" or "llm model format"]</span>
-      <span class="pr-key">year</span>=<span class="pr-val">2023</span>
-      <span class="pr-key">per_page</span>=<span class="pr-val">50</span>
-<span class="pr-cm">// convert to csv</span>
-<span class="pr-action">convert:</span>
-      <span class="pr-key">from</span>=<span class="pr-val">json</span>
-      <span class="pr-key">to</span>=<span class="pr-val">csv</span>
-      <span class="pr-key">fields</span>=<span class="pr-val">[title, publication_year as year, doi]</span>
-<span class="pr-cm">// save to disk</span>
+      <pre><span class="pr-action">fetch</span> with openalex.map:
+    <span class="pr-key">query</span>=<span class="pr-val">["transformer architecture" or "llm model format"]</span>
+    <span class="pr-key">year</span>=<span class="pr-val">2023</span>
+    <span class="pr-key">per_page</span>=<span class="pr-val">50</span>
 <span class="pr-action">save:</span>
-      <span class="pr-key">to</span>=<span class="pr-val">output/records.csv</span></pre>
+    <span class="pr-key">fields</span>=<span class="pr-val">[title, publication_year as year, doi]</span>
+    <span class="pr-key">to</span>=<span class="pr-val">output/records.csv</span></pre>
     </div>
+  </div>
 
+  <!-- ── PIPELINE 2 ── -->
+  <span class="pipeline-label">Pipeline 2 — fetch papers, insert into database</span>
+
+  <div class="compare">
+    <div class="pane">
+      <div class="pane-header python">Python</div>
+      <pre><span class="py-kw">from</span> openalex <span class="py-kw">import</span> fetch, to_rows, to_db
+
+records = <span class="py-fn">fetch</span>(<span class="py-str">"large language models"</span>, <span class="py-num">2024</span>, per_page=<span class="py-num">100</span>)
+rows = <span class="py-fn">to_rows</span>(records, {
+    <span class="py-str">"title"</span>: <span class="py-str">"title"</span>,
+    <span class="py-str">"year"</span>: <span class="py-str">"publication_year"</span>,
+    <span class="py-str">"doi"</span>: <span class="py-str">"doi"</span>,
+    <span class="py-str">"citations"</span>: <span class="py-str">"cited_by_count"</span>
+})
+<span class="py-fn">to_db</span>(rows, <span class="py-str">"papers"</span>, <span class="py-str">"doi"</span>)</pre>
+    </div>
+    <div class="pane pragma-pane">
+      <div class="pane-header pragma">Pragma</div>
+      <pre><span class="pr-action">fetch</span> with openalex.map:
+    <span class="pr-key">query</span>=<span class="pr-val">["large language models"]</span>
+    <span class="pr-key">year</span>=<span class="pr-val">2024</span>
+    <span class="pr-key">per_page</span>=<span class="pr-val">100</span>
+<span class="pr-action">save</span> with postgres.map:
+    <span class="pr-key">fields</span>=<span class="pr-val">[title, publication_year as year,</span>
+            <span class="pr-val">doi, cited_by_count as citations]</span>
+    <span class="pr-key">mode</span>=<span class="pr-val">upsert</span></pre>
+    </div>
+  </div>
+
+  <!-- ── PIPELINE 3 ── -->
+  <span class="pipeline-label">Pipeline 3 — fetch papers, email as CSV attachment</span>
+
+  <div class="compare">
+    <div class="pane">
+      <div class="pane-header python">Python</div>
+      <pre><span class="py-kw">from</span> openalex <span class="py-kw">import</span> fetch, to_rows, to_csv, to_email
+
+records = <span class="py-fn">fetch</span>(
+    <span class="py-str">"neural architecture search"</span>,
+    <span class="py-num">2023</span>,
+    per_page=<span class="py-num">25</span>
+)
+rows = <span class="py-fn">to_rows</span>(records, {
+    <span class="py-str">"title"</span>: <span class="py-str">"title"</span>,
+    <span class="py-str">"year"</span>: <span class="py-str">"publication_year"</span>,
+    <span class="py-str">"doi"</span>: <span class="py-str">"doi"</span>
+})
+<span class="py-fn">to_csv</span>(rows, <span class="py-str">"/tmp/papers.csv"</span>, [<span class="py-str">"title"</span>, <span class="py-str">"year"</span>, <span class="py-str">"doi"</span>])
+<span class="py-fn">to_email</span>(<span class="py-str">"/tmp/papers.csv"</span>, <span class="py-str">"research@lab.com"</span>, <span class="py-str">"Weekly Papers Report"</span>)</pre>
+    </div>
+    <div class="pane pragma-pane">
+      <div class="pane-header pragma">Pragma</div>
+      <pre><span class="pr-action">fetch</span> with openalex.map:
+    <span class="pr-key">query</span>=<span class="pr-val">["neural architecture search"]</span>
+    <span class="pr-key">year</span>=<span class="pr-val">2023</span>
+    <span class="pr-key">per_page</span>=<span class="pr-val">25</span>
+<span class="pr-action">save:</span>
+    <span class="pr-key">fields</span>=<span class="pr-val">[title, publication_year as year, doi]</span>
+    <span class="pr-key">convert</span>=<span class="pr-val">csv</span>
+    <span class="pr-key">to</span>=<span class="pr-val">/tmp/papers.csv</span>
+<span class="pr-action">send:</span>
+    <span class="pr-key">to</span>=<span class="pr-val">research@lab.com</span>, <span class="pr-key">subject</span>=<span class="pr-val">"Weekly Papers Report"</span></pre>
+    </div>
   </div>
 
   <div class="btn-row">
