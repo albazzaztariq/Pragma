@@ -1,0 +1,10 @@
+base=https://api.openalex.org
+auth=Bearer {OPENALEX_KEY}
+headers=[User-Agent: mailto:you@email.com]
+encoding=url_query
+separator=&
+space=%20
+
+query     → search={value}
+year      → filter=publication_year:{value}
+per_page  → per_page={value}
