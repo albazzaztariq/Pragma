@@ -226,8 +226,9 @@ main {
 
 <span class="py-var">API_URL</span> = <span class="py-str">"https://api.openalex.org/works"</span>
 <span class="py-var">params</span> = {
-    <span class="py-str">"filter"</span>: <span class="py-str">"concept.id:C41008148"</span>,
-    <span class="py-str">"per-page"</span>: <span class="py-num">100</span>,
+    <span class="py-str">"search"</span>: <span class="py-str">"transformer architecture OR llm model format"</span>,
+    <span class="py-str">"per-page"</span>: <span class="py-num">50</span>,
+    <span class="py-str">"filter"</span>: <span class="py-str">"publication_year:2023"</span>,
 }
 <span class="py-var">headers</span> = {
     <span class="py-str">"Authorization"</span>: <span class="py-str">"Bearer mytoken123"</span>
