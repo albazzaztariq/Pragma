@@ -269,23 +269,16 @@ os.<span class="py-fn">makedirs</span>(<span class="py-str">"output"</span>, exi
       <pre><span class="pr-cm">// fetch from the API</span>
 <span class="pr-action">fetch:</span>
       <span class="pr-key">source</span>=<span class="pr-val">https://api.openalex.org/works</span>
-      <span class="pr-key">auth</span>=<span class="pr-name">openalex_auth</span>
-      <span class="pr-key">format</span>=<span class="pr-val">json</span>
       <span class="pr-key">structure</span>=<span class="pr-name">openalex.map</span>
-      <span class="pr-key">name</span>=<span class="pr-name">records</span>
 <span class="pr-cm">// convert to csv</span>
 <span class="pr-action">convert:</span>
-      <span class="pr-key">content</span>=<span class="pr-name">records</span>
       <span class="pr-key">from</span>=<span class="pr-val">json</span>
       <span class="pr-key">to</span>=<span class="pr-val">csv</span>
-      <span class="pr-key">name</span>=<span class="pr-name">report</span>
 <span class="pr-cm">// save to disk</span>
 <span class="pr-action">save:</span>
       <span class="pr-key">to</span>=<span class="pr-val">file</span>
       <span class="pr-key">dest</span>=<span class="pr-val">output/records.csv</span>
-      <span class="pr-key">content</span>=<span class="pr-name">report</span>
-      <span class="pr-key">format</span>=<span class="pr-val">csv</span>
-      <span class="pr-key">mode</span>=<span class="pr-val">overwrite</span></pre>
+      <span class="pr-key">format</span>=<span class="pr-val">csv</span></pre>
     </div>
 
   </div>
