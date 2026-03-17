@@ -33,49 +33,61 @@ main {
 /* ── TOP ROW ── */
 .top-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  margin-bottom: 28px;
+  grid-template-columns: 3fr 1fr;
+  gap: 40px;
+  margin-bottom: 36px;
+  min-height: 160px;
 }
 
 .top-left {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 8px;
-  padding-bottom: 4px;
+  justify-content: center;
+  gap: 0;
 }
 
-.intro-text {
-  font-size: 0.88rem;
+.intro-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.intro-line {
+  font-size: 0.92rem;
   color: #a8a880;
-  line-height: 1.7;
-  max-width: 440px;
+  line-height: 1.55;
 }
 
-.intro-text strong {
+.intro-line.spacer { margin-top: 10px; }
+
+.intro-line strong {
   color: #c8a030;
+  font-weight: 500;
+}
+
+.intro-line em {
+  font-style: normal;
+  color: #e8dfc8;
   font-weight: 500;
 }
 
 .top-right {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 0 0 4px 20px;
-  gap: 6px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .header-logo-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .logo-circle {
-  width: 44px;
-  height: 44px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   border: 2px solid #c8a030;
   background: #1a1a0a;
@@ -86,32 +98,31 @@ main {
 }
 
 .logo-circle img {
-  height: 27px;
+  height: 33px;
   width: auto;
   object-fit: contain;
 }
 
 .page-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #e8dfc8;
   letter-spacing: 0.02em;
 }
 
 .tagline {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-style: italic;
   color: #7a7a50;
-  padding-left: 2px;
-  margin-bottom: 8px;
+  text-align: right;
 }
 
 .lang-credit {
   font-size: 0.75rem;
   font-style: italic;
   color: #9a9a6a;
-  padding-left: 2px;
+  text-align: right;
 }
 
 .lang-credit a {
@@ -274,14 +285,20 @@ main {
 
   <div class="top-row">
     <div class="top-left">
-      <p class="intro-text">Scheduled jobs — data pulls, email reports, DB updates. Swapping and recycling code is frequent. Below shows a helper function in Python to do this: <strong>70 lines</strong>. On the opposite side, <strong>12 lines</strong>. In each subsequent place they were used — <strong>30–40% less code</strong>. This was made to get rid of repetitive boilerplate, and make switching things out more akin to mechanical work instead of logic and algorithms. You say what goes where, and that's the end of it. From config to implementation.</p>
+      <div class="intro-lines">
+        <p class="intro-line">Scheduled jobs: data pulls, emails, DB updates. Swapping, recycling code frequently.</p>
+        <p class="intro-line spacer">Python has helpers. Below: <strong>70 lines</strong>. With this language: <strong>12 lines</strong>.</p>
+        <p class="intro-line spacer"><strong>80% less to maintain. 30–40% less even in implementation.</strong></p>
+        <p class="intro-line spacer">The goal was to make this work mechanical instead of logic or algorithms.</p>
+        <p class="intro-line">You just say <em>what</em> you're doing and you're done. Config or implementation.</p>
+      </div>
     </div>
     <div class="top-right">
-      <p class="tagline">Write what, not how.</p>
       <div class="header-logo-row">
         <div class="logo-circle"><img src="logo.png" alt="Pragma"></div>
         <span class="page-title">Pragma</span>
       </div>
+      <p class="tagline">Write what, not how.</p>
       <p class="lang-credit">Part of the <a href="https://lang-language-project.github.io/">LANG Project</a>.</p>
     </div>
   </div>
