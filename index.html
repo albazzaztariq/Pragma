@@ -277,6 +277,7 @@ os.<span class="py-fn">makedirs</span>(<span class="py-str">"output"</span>, exi
 <span class="pr-action">convert:</span>
       <span class="pr-key">from</span>=<span class="pr-val">json</span>
       <span class="pr-key">to</span>=<span class="pr-val">csv</span>
+      <span class="pr-key">fields</span>=<span class="pr-val">[title, publication_year as year, doi]</span>
 <span class="pr-cm">// save to disk</span>
 <span class="pr-action">save:</span>
       <span class="pr-key">to</span>=<span class="pr-val">output/records.csv</span></pre>
